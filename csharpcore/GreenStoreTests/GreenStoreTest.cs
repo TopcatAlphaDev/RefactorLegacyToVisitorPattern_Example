@@ -15,11 +15,9 @@ namespace GreenStoreTests
         [InlineData(100, 19)]
         public void plus3_Agility_Vest_decreasing_quality(int sellIn, int expectedQuality)
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "+3 Agility Vest", SellIn = sellIn, Quality = 20 } };
-            GreenStore app = new GreenStore(Items);
-            app.UpdateQuality();
-            Assert.Equal("+3 Agility Vest", Items[0].Name);
-            Assert.Equal(expectedQuality, Items[0].Quality);
+            var itemquality = 20;
+            var itemName = "+3 Agility Vest";
+            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
         }
 
         [Theory]
@@ -30,11 +28,9 @@ namespace GreenStoreTests
         [InlineData(100, 1)]
         public void Aged_Cheddar_increasing_quality(int sellIn, int expectedQuality)
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "Aged Cheddar", SellIn = sellIn, Quality = 0 } };
-            GreenStore app = new GreenStore(Items);
-            app.UpdateQuality();
-            Assert.Equal("Aged Cheddar", Items[0].Name);
-            Assert.Equal(expectedQuality, Items[0].Quality);
+            var itemquality = 0;
+            var itemName = "Aged Cheddar";
+            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
         }
 
         [Theory]
@@ -48,12 +44,16 @@ namespace GreenStoreTests
         {
             var itemquality = 80;
             var itemName = "Longclaw";
+            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+        }
+
+        private static void TestItemQuality(int sellIn, int expectedQuality, int itemquality, string itemName)
+        {
             IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = itemquality } };
             GreenStore app = new GreenStore(Items);
             app.UpdateQuality();
             Assert.Equal(itemName, Items[0].Name);
             Assert.Equal(expectedQuality, Items[0].Quality);
         }
-
     }
 }
