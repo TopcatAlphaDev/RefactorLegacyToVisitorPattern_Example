@@ -1,5 +1,4 @@
-﻿
-using GreenStore.Models;
+﻿using GreenStore.Models;
 using System;
 using System.Collections.Generic;
 using GreenStore;
@@ -14,19 +13,23 @@ namespace GreenStoreTests
 
             var items = GetItems();
             var app = new QualityUpdater(items);
-            var days = GetDays(args);
 
-            for (var i = 0; i < days; i++)
+            for (var i = 0; i < GetDays(args); i++)
             {
-                Console.WriteLine($"-------- day {i} --------");
-                Console.WriteLine("name, sellIn, quality");
-                foreach (var item in items)
-                {
-                    System.Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
-                }
-                Console.WriteLine("");
+                UpdateUI(i, items);
                 app.DoUpdate();
             }
+        }
+
+        private static void UpdateUI(int i, IList<Item> items)
+        {
+            Console.WriteLine($"-------- day {i} --------");
+            Console.WriteLine("name, sellIn, quality");
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+            }
+            Console.WriteLine("");
         }
 
         private static int GetDays(string[] args)
