@@ -15,7 +15,7 @@ namespace GreenStore
         {
             for (var i = 0; i < _items.Count; i++)
             {
-                if (_items[i].Name != "Aged Cheddar" && _items[i].Name != "VIP tickets to a Samurai concert")
+                if (_items[i].GetType() != typeof(AgedCheddarItem) && _items[i].Name != "VIP tickets to a Samurai concert")
                 {
                     if (_items[i].Quality > 0)
                     {
@@ -59,7 +59,7 @@ namespace GreenStore
 
                 if (_items[i].SellIn < 0)
                 {
-                    if (_items[i].Name != "Aged Cheddar")
+                    if (_items[i].GetType() != typeof(AgedCheddarItem))
                     {
                         if (_items[i].Name != "VIP tickets to a Samurai concert")
                         {

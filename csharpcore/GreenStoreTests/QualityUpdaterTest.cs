@@ -28,7 +28,7 @@ namespace GreenStoreTests
         [InlineData(100, 1)]
         public void Aged_Cheddar_increasing_quality(int sellIn, int expectedQuality)
         {
-            var item = new Item { Name = "Aged Cheddar", SellIn = sellIn, Quality = 0 };
+            var item = new AgedCheddarItem { SellIn = sellIn, Quality = 0 };
             TestItemQuality(item, expectedQuality);
         }
 
