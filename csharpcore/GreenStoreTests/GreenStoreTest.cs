@@ -36,5 +36,24 @@ namespace GreenStoreTests
             Assert.Equal("Aged Cheddar", Items[0].Name);
             Assert.Equal(expectedQuality, Items[0].Quality);
         }
+
+        [Theory]
+        [InlineData(-1, 80)]
+        [InlineData(0, 80)]
+        [InlineData(5, 80)]
+        [InlineData(9, 80)]
+        [InlineData(10, 80)]
+        [InlineData(100, 80)]
+        public void Longclaw_fixed_quality(int sellIn, int expectedQuality)
+        {
+            var itemquality = 80;
+            var itemName = "Longclaw";
+            IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = itemquality } };
+            GreenStore app = new GreenStore(Items);
+            app.UpdateQuality();
+            Assert.Equal(itemName, Items[0].Name);
+            Assert.Equal(expectedQuality, Items[0].Quality);
+        }
+
     }
 }
