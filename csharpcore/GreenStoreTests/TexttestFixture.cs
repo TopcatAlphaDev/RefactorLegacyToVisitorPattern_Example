@@ -1,9 +1,8 @@
 ﻿
 using GreenStore.Models;
-using GreenStoreKata;
-
 using System;
 using System.Collections.Generic;
+using GreenStore;
 
 namespace GreenStoreTests
 {
@@ -41,7 +40,7 @@ namespace GreenStoreTests
                 new Item {Name = "Conjured Charisma Potion", SellIn = 3, Quality = 6}
             };
 
-            var app = new GreenStoreKata.GreenStore(Items);
+            var app = new QualityUpdater(Items);
 
             int days = 30;
             if (args.Length > 0)
@@ -58,7 +57,7 @@ namespace GreenStoreTests
                     System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
                 }
                 Console.WriteLine("");
-                app.UpdateQuality();
+                app.DoUpdate();
             }
         }
     }

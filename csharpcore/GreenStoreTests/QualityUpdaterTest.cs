@@ -1,11 +1,11 @@
 ﻿using Xunit;
 using System.Collections.Generic;
-using GreenStoreKata;
+using GreenStore;
 using GreenStore.Models;
 
 namespace GreenStoreTests
 {
-    public class GreenStoreTest
+    public class QualityUpdaterTest
     {
 
         [Theory]
@@ -98,8 +98,8 @@ namespace GreenStoreTests
         private static void TestItemQuality(Item item, int expectedQuality)
         {
             IList<Item> items = new List<Item> { item };
-            GreenStoreKata.GreenStore app = new GreenStoreKata.GreenStore(items);
-            app.UpdateQuality();
+            QualityUpdater app = new QualityUpdater(items);
+            app.DoUpdate();
             Assert.Equal(item.Name, items[0].Name);
             Assert.Equal(expectedQuality, items[0].Quality);
         }
