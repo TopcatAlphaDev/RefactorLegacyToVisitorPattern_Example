@@ -17,7 +17,7 @@ namespace GreenStoreTests
         public void plus3_Agility_Vest_decreasing_quality(int sellIn, int expectedQuality)
         {
             var item = new Plus3AgilityVestItem { SellIn = sellIn, Quality = 20 };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -29,7 +29,7 @@ namespace GreenStoreTests
         public void Aged_Cheddar_increasing_quality(int sellIn, int expectedQuality)
         {
             var item = new AgedCheddarItem { SellIn = sellIn, Quality = 0 };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -42,7 +42,7 @@ namespace GreenStoreTests
         public void Longclaw_fixed_quality(int sellIn, int expectedQuality)
         {
             var item =  new LongClawItem { SellIn = sellIn, Quality = 80 };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -55,7 +55,7 @@ namespace GreenStoreTests
         public void Elixir_of_the_Bear_quality(int sellIn, int expectedQuality)
         {
             var item = new ElixiroftheBearItem { SellIn = sellIn, Quality = 7 };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -78,7 +78,7 @@ namespace GreenStoreTests
         public void VIP_tickets_to_a_Samurai_concert_quality(int sellIn, int itemQuality, int expectedQuality)
         {
             var item = new ViPTicketsToASamuraiConcertItem { SellIn = sellIn, Quality = itemQuality };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -92,10 +92,10 @@ namespace GreenStoreTests
         public void Conjured_Charisma_Potion_quality(int sellIn, int expectedQuality)
         {
             var item = new ConjuredCharismaPotionItem { SellIn = sellIn, Quality = 6 };
-            TestItemQuality(item, expectedQuality);
+            AssertQuality(item, expectedQuality);
         }
 
-        private static void TestItemQuality(Item item, int expectedQuality)
+        private static void AssertQuality(Item item, int expectedQuality)
         {
             IList<Item> items = new List<Item> { item };
             QualityUpdater app = new QualityUpdater(items);
