@@ -12,12 +12,12 @@ namespace GreenStoreTests
             Console.WriteLine("OMGHAI!");
 
             var items = GetItems();
-            var app = new QualityUpdater(items);
+            var qualityUpdater = new QualityUpdater(items);
 
             for (var i = 0; i < GetDays(args); i++)
             {
                 UpdateUI(i, items);
-                app.DoUpdate();
+                qualityUpdater.DoUpdate();
             }
         }
 
