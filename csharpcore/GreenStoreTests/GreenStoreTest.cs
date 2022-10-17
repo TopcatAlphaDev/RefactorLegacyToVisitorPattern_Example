@@ -47,6 +47,20 @@ namespace GreenStoreTests
             TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
         }
 
+        [Theory]
+        [InlineData(-1, 5)]
+        [InlineData(0, 5)]
+        [InlineData(5, 6)]
+        [InlineData(9, 6)]
+        [InlineData(10, 6)]
+        [InlineData(100, 6)]
+        public void Elixir_of_the_Bear_fixed_quality(int sellIn, int expectedQuality)
+        {
+            var itemquality = 7;
+            var itemName = "Elixir of the Bear";
+            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+        }
+
         private static void TestItemQuality(int sellIn, int expectedQuality, int itemquality, string itemName)
         {
             IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = itemquality } };
@@ -55,5 +69,7 @@ namespace GreenStoreTests
             Assert.Equal(itemName, Items[0].Name);
             Assert.Equal(expectedQuality, Items[0].Quality);
         }
+
+
     }
 }
