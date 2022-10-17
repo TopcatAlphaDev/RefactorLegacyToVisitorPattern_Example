@@ -12,53 +12,47 @@ namespace GreenStoreTests
         {
             Console.WriteLine("OMGHAI!");
 
-            IList<Item> Items = new List<Item>{
-                new Item {Name = "+3 Agility Vest", SellIn = 10, Quality = 20},
-                new Item {Name = "Aged Cheddar", SellIn = 2, Quality = 0},
-                new Item {Name = "Elixir of the Bear", SellIn = 5, Quality = 7},
-                new LongClawItem { SellIn = 0, Quality = 80},
-                new LongClawItem { SellIn = -1, Quality = 80},
-                new Item
-                {
-                    Name = "VIP tickets to a Samurai concert",
-                    SellIn = 15,
-                    Quality = 20
-                },
-                new Item
-                {
-                    Name = "VIP tickets to a Samurai concert",
-                    SellIn = 10,
-                    Quality = 49
-                },
-                new Item
-                {
-                    Name = "VIP tickets to a Samurai concert",
-                    SellIn = 5,
-                    Quality = 49
-                },
-                // this conjured item does not work properly yet
-                new Item {Name = "Conjured Charisma Potion", SellIn = 3, Quality = 6}
-            };
-
-            var app = new QualityUpdater(Items);
-
-            int days = 30;
-            if (args.Length > 0)
-            {
-                days = int.Parse(args[0]) + 1;
-            }
+            var items = GetItems();
+            var app = new QualityUpdater(items);
+            var days = GetDays(args);
 
             for (var i = 0; i < days; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");
                 Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                for (var j = 0; j < items.Count; j++)
                 {
-                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    System.Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
                 }
                 Console.WriteLine("");
                 app.DoUpdate();
             }
+        }
+
+        private static int GetDays(string[] args)
+        {
+            if (args.Length > 0)
+            {
+                return int.Parse(args[0]) + 1;
+            }
+            return 30;
+        }
+
+        private static IList<Item> GetItems()
+        {
+            return new List<Item>
+            {
+                new Plus3AgilityVestItem { SellIn = 10, Quality = 20 },
+                new AgedCheddarItem { SellIn = 2, Quality = 0 },
+                new ElixiroftheBearItem { SellIn = 5, Quality = 7 },
+                new LongClawItem { SellIn = 0, Quality = 80 },
+                new LongClawItem { SellIn = -1, Quality = 80 },
+                new ViPTicketsToASamuraiConcertItem { SellIn = 15, Quality = 20 },
+                new ViPTicketsToASamuraiConcertItem { SellIn = 10, Quality = 49 },
+                new ViPTicketsToASamuraiConcertItem { SellIn = 5, Quality = 49 },
+                // this conjured item does not work properly yet
+                new ConjuredCharismaPotionItem { SellIn = 3, Quality = 6 }
+            };
         }
     }
 }
