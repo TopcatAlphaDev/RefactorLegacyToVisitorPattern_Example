@@ -18,11 +18,11 @@ namespace GreenStoreTests
 
             for (var i = 0; i < days; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine($"-------- day {i} --------");
                 Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < items.Count; j++)
+                foreach (var item in items)
                 {
-                    System.Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
+                    System.Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
                 }
                 Console.WriteLine("");
                 app.DoUpdate();
