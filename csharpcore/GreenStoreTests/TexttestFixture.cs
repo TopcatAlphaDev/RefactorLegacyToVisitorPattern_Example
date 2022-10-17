@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using GreenStore;
+using GreenStore.Models.Interfaces;
+using GreenStoreTests.Repositories;
 
 namespace GreenStoreTests
 {
@@ -11,7 +13,7 @@ namespace GreenStoreTests
         {
             Console.WriteLine("OMGHAI!");
 
-            var items = GetItems();
+            var items = new ItemRepository().GetAll();
             var qualityUpdater = new QualityUpdater(items);
 
             for (var i = 0; i < GetDays(args); i++)
@@ -21,13 +23,13 @@ namespace GreenStoreTests
             }
         }
 
-        private static void UpdateUI(int i, IList<Item> items)
+        private static void UpdateUI(int i, IList<IItem> items)
         {
             Console.WriteLine($"-------- day {i} --------");
             Console.WriteLine("name, sellIn, quality");
             foreach (var item in items)
             {
-                Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+                Console.WriteLine($"{(item as Item)?.Name}, {(item as Item)?.SellIn}, {(item as Item)?.Quality}");
             }
             Console.WriteLine("");
         }
@@ -39,23 +41,6 @@ namespace GreenStoreTests
                 return int.Parse(args[0]) + 1;
             }
             return 30;
-        }
-
-        private static IList<Item> GetItems()
-        {
-            return new List<Item>
-            {
-                new Plus3AgilityVestItem { SellIn = 10, Quality = 20 },
-                new AgedCheddarItem { SellIn = 2, Quality = 0 },
-                new ElixiroftheBearItem { SellIn = 5, Quality = 7 },
-                new LongClawItem { SellIn = 0, Quality = 80 },
-                new LongClawItem { SellIn = -1, Quality = 80 },
-                new ViPTicketsToASamuraiConcertItem { SellIn = 15, Quality = 20 },
-                new ViPTicketsToASamuraiConcertItem { SellIn = 10, Quality = 49 },
-                new ViPTicketsToASamuraiConcertItem { SellIn = 5, Quality = 49 },
-                // this conjured item does not work properly yet
-                new ConjuredCharismaPotionItem { SellIn = 3, Quality = 6 }
-            };
         }
     }
 }

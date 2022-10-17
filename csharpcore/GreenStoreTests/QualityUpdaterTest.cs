@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GreenStore;
 using GreenStore.Models;
+using GreenStore.Models.Interfaces;
 
 namespace GreenStoreTests
 {
@@ -95,13 +96,13 @@ namespace GreenStoreTests
             AssertQuality(item, expectedQuality);
         }
 
-        private static void AssertQuality(Item item, int expectedQuality)
+        private static void AssertQuality(IItem item, int expectedQuality)
         {
-            IList<Item> items = new List<Item> { item };
+            IList<IItem> items = new List<IItem> { item };
             QualityUpdater app = new QualityUpdater(items);
             app.DoUpdate();
-            Assert.Equal(item.Name, items[0].Name);
-            Assert.Equal(expectedQuality, items[0].Quality);
+            Assert.Equal((item as Item)?.Name, (items[0] as Item)?.Name);
+            Assert.Equal(expectedQuality, (items[0] as Item)?.Quality);
         }
         
     }

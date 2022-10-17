@@ -2,9 +2,9 @@
 
 namespace GreenStore.Models
 {
-    public class ViPTicketsToASamuraiConcertItem : Item, IItem
+    public class ConjuredCharismaPotionItem : Item, IItem
     {
-        public new string Name => "VIP tickets to a Samurai concert";
+        public new string Name => "Conjured Charisma Potion";
         public void Accept(IQualityUpdater qualityUpdater)
         {
             qualityUpdater.Visit(this);
