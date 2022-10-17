@@ -54,11 +54,34 @@ namespace GreenStoreTests
         [InlineData(9, 6)]
         [InlineData(10, 6)]
         [InlineData(100, 6)]
-        public void Elixir_of_the_Bear_fixed_quality(int sellIn, int expectedQuality)
+        public void Elixir_of_the_Bear_quality(int sellIn, int expectedQuality)
         {
             var itemquality = 7;
             var itemName = "Elixir of the Bear";
             TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+        }
+
+        [Theory]
+        [InlineData(-1, 49, 0)]
+        [InlineData(0, 49, 0)]
+        [InlineData(4, 49, 50)]
+        [InlineData(5, 49, 50)]
+        [InlineData(6, 49, 50)]
+        [InlineData(9, 49, 50)]
+        [InlineData(10, 49, 50)]
+        [InlineData(11, 49, 50)]
+        [InlineData(100, 49, 50)]
+
+        [InlineData(-1, 20, 0)]
+        [InlineData(0, 20, 0)]
+        [InlineData(14, 20, 21)]
+        [InlineData(15, 20, 21)]
+        [InlineData(16, 20, 21)]
+        [InlineData(100, 20, 21)]
+        public void VIP_tickets_to_a_Samurai_concert_quality(int sellIn, int itemQuality, int expectedQuality)
+        {
+            var itemName = "VIP tickets to a Samurai concert";
+            TestItemQuality(sellIn, expectedQuality, itemQuality, itemName);
         }
 
         private static void TestItemQuality(int sellIn, int expectedQuality, int itemquality, string itemName)
