@@ -84,6 +84,21 @@ namespace GreenStoreTests
             TestItemQuality(sellIn, expectedQuality, itemQuality, itemName);
         }
 
+        [Theory]
+        [InlineData(-1, 4)]
+        [InlineData(0, 4)]
+        [InlineData(3, 5)]
+        [InlineData(5, 5)]
+        [InlineData(9, 5)]
+        [InlineData(10, 5)]
+        [InlineData(100, 5)]
+        public void Conjured_Charisma_Potion_quality(int sellIn, int expectedQuality)
+        {
+            var itemquality = 6;
+            var itemName = "Conjured Charisma Potion";
+            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+        }
+
         private static void TestItemQuality(int sellIn, int expectedQuality, int itemquality, string itemName)
         {
             IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = itemquality } };
