@@ -1,4 +1,4 @@
-﻿namespace GreenStoreKata
+﻿namespace GreenStore.Models
 {
     public class Item
     {

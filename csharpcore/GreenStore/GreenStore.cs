@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GreenStore.Models;
+using System.Collections.Generic;
 
 namespace GreenStoreKata
 {
@@ -18,7 +19,7 @@ namespace GreenStoreKata
                 {
                     if (Items[i].Quality > 0)
                     {
-                        if (Items[i].Name != "Longclaw")
+                        if (typeof(LongClawItem) != Items[i].GetType())
                         {
                             Items[i].Quality = Items[i].Quality - 1;
                         }
@@ -51,7 +52,7 @@ namespace GreenStoreKata
                     }
                 }
 
-                if (Items[i].Name != "Longclaw")
+                if (typeof(LongClawItem) != Items[i].GetType())
                 {
                     Items[i].SellIn = Items[i].SellIn - 1;
                 }
@@ -64,7 +65,7 @@ namespace GreenStoreKata
                         {
                             if (Items[i].Quality > 0)
                             {
-                                if (Items[i].Name != "Longclaw")
+                                if (typeof(LongClawItem) != Items[i].GetType())
                                 {
                                     Items[i].Quality = Items[i].Quality - 1;
                                 }

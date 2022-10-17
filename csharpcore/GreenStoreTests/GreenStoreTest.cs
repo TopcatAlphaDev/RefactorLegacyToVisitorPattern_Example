@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using GreenStoreKata;
+using GreenStore.Models;
 
 namespace GreenStoreTests
 {
@@ -15,9 +16,8 @@ namespace GreenStoreTests
         [InlineData(100, 19)]
         public void plus3_Agility_Vest_decreasing_quality(int sellIn, int expectedQuality)
         {
-            var itemquality = 20;
-            var itemName = "+3 Agility Vest";
-            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+            var item = new Item { Name = "+3 Agility Vest", SellIn = sellIn, Quality = 20 };
+            TestItemQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -28,9 +28,8 @@ namespace GreenStoreTests
         [InlineData(100, 1)]
         public void Aged_Cheddar_increasing_quality(int sellIn, int expectedQuality)
         {
-            var itemquality = 0;
-            var itemName = "Aged Cheddar";
-            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+            var item = new Item { Name = "Aged Cheddar", SellIn = sellIn, Quality = 0 };
+            TestItemQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -42,9 +41,8 @@ namespace GreenStoreTests
         [InlineData(100, 80)]
         public void Longclaw_fixed_quality(int sellIn, int expectedQuality)
         {
-            var itemquality = 80;
-            var itemName = "Longclaw";
-            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+            var item =  new LongClawItem { SellIn = sellIn, Quality = 80 };
+            TestItemQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -56,9 +54,8 @@ namespace GreenStoreTests
         [InlineData(100, 6)]
         public void Elixir_of_the_Bear_quality(int sellIn, int expectedQuality)
         {
-            var itemquality = 7;
-            var itemName = "Elixir of the Bear";
-            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+            var item = new Item { Name = "Elixir of the Bear", SellIn = sellIn, Quality = 7 };
+            TestItemQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -80,8 +77,8 @@ namespace GreenStoreTests
         [InlineData(100, 20, 21)]
         public void VIP_tickets_to_a_Samurai_concert_quality(int sellIn, int itemQuality, int expectedQuality)
         {
-            var itemName = "VIP tickets to a Samurai concert";
-            TestItemQuality(sellIn, expectedQuality, itemQuality, itemName);
+            var item = new Item { Name = "VIP tickets to a Samurai concert", SellIn = sellIn, Quality = itemQuality };
+            TestItemQuality(item, expectedQuality);
         }
 
         [Theory]
@@ -94,20 +91,18 @@ namespace GreenStoreTests
         [InlineData(100, 5)]
         public void Conjured_Charisma_Potion_quality(int sellIn, int expectedQuality)
         {
-            var itemquality = 6;
-            var itemName = "Conjured Charisma Potion";
-            TestItemQuality(sellIn, expectedQuality, itemquality, itemName);
+            var item = new Item { Name = "Conjured Charisma Potion", SellIn = sellIn, Quality = 6 };
+            TestItemQuality(item, expectedQuality);
         }
 
-        private static void TestItemQuality(int sellIn, int expectedQuality, int itemquality, string itemName)
+        private static void TestItemQuality(Item item, int expectedQuality)
         {
-            IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = itemquality } };
-            GreenStore app = new GreenStore(Items);
+            IList<Item> items = new List<Item> { item };
+            GreenStoreKata.GreenStore app = new GreenStoreKata.GreenStore(items);
             app.UpdateQuality();
-            Assert.Equal(itemName, Items[0].Name);
-            Assert.Equal(expectedQuality, Items[0].Quality);
+            Assert.Equal(item.Name, items[0].Name);
+            Assert.Equal(expectedQuality, items[0].Quality);
         }
-
-
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using GreenStore.Models;
 using GreenStoreKata;
 
 using System;
@@ -16,8 +17,8 @@ namespace GreenStoreTests
                 new Item {Name = "+3 Agility Vest", SellIn = 10, Quality = 20},
                 new Item {Name = "Aged Cheddar", SellIn = 2, Quality = 0},
                 new Item {Name = "Elixir of the Bear", SellIn = 5, Quality = 7},
-                new Item {Name = "Longclaw", SellIn = 0, Quality = 80},
-                new Item {Name = "Longclaw", SellIn = -1, Quality = 80},
+                new LongClawItem { SellIn = 0, Quality = 80},
+                new LongClawItem { SellIn = -1, Quality = 80},
                 new Item
                 {
                     Name = "VIP tickets to a Samurai concert",
@@ -40,7 +41,7 @@ namespace GreenStoreTests
                 new Item {Name = "Conjured Charisma Potion", SellIn = 3, Quality = 6}
             };
 
-            var app = new GreenStore(Items);
+            var app = new GreenStoreKata.GreenStore(Items);
 
             int days = 30;
             if (args.Length > 0)
