@@ -21,5 +21,20 @@ namespace GreenStoreTests
             Assert.Equal("+3 Agility Vest", Items[0].Name);
             Assert.Equal(expectedQuality, Items[0].Quality);
         }
+
+        [Theory]
+        [InlineData(-1, 2)]
+        [InlineData(0, 2)]
+        [InlineData(5, 1)]
+        [InlineData(10, 1)]
+        [InlineData(100, 1)]
+        public void Aged_Cheddar_increasing_quality(int sellIn, int expectedQuality)
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Aged Cheddar", SellIn = sellIn, Quality = 0 } };
+            GreenStore app = new GreenStore(Items);
+            app.UpdateQuality();
+            Assert.Equal("Aged Cheddar", Items[0].Name);
+            Assert.Equal(expectedQuality, Items[0].Quality);
+        }
     }
 }
