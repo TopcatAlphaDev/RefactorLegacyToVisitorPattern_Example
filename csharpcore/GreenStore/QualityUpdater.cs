@@ -23,183 +23,52 @@ namespace GreenStore
 
         public void Visit(LongClawItem item)
         {
-            if (item.Quality > 0)
+            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
             {
-                if (typeof(LongClawItem) != item.GetType())
-                {
-                    item.Quality -= 1;
-                }
+                item.Quality -= 1;
             }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
-                }
-            }
-
         }
         public void Visit(AgedCheddarItem item)
         {
             if (item.Quality < 50)
             {
                 item.Quality += 1;
-
-                if (item.GetType() == typeof(ViPTicketsToASamuraiConcertItem))
-                {
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-                    }
-                }
             }
 
-            if (typeof(LongClawItem) != item.GetType())
+            item.SellIn -= 1;
+            
+            if (item.SellIn < 0 &&item.Quality < 50)
             {
-                item.SellIn -= 1;
+                item.Quality += 1;
             }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
-                }
-            }
-
         }
         public void Visit(Plus3AgilityVestItem item)
         {
             if (item.Quality > 0)
             {
-                if (typeof(LongClawItem) != item.GetType())
-                {
-                    item.Quality -= 1;
-                }
-            }
-            if (typeof(LongClawItem) != item.GetType())
-            {
-                item.SellIn -= 1;
-            }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
-                }
+                item.Quality -= 1;
             }
 
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
+            {
+                item.Quality -= 1;
+            }
         }
 
         public void Visit(ConjuredCharismaPotionItem item)
         {
             if (item.Quality > 0)
             {
-                if (typeof(LongClawItem) != item.GetType())
-                {
-                    item.Quality -= 1;
-                }
+                item.Quality -= 1;
             }
-            if (typeof(LongClawItem) != item.GetType())
+            
+            item.SellIn -= 1;
+            
+            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
             {
-                item.SellIn -= 1;
-            }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
-                }
+                item.Quality -= 1;
             }
 
         }
@@ -208,41 +77,14 @@ namespace GreenStore
         {
             if (item.Quality > 0)
             {
-                if (typeof(LongClawItem) != item.GetType())
-                {
-                    item.Quality -= 1;
-                }
+                item.Quality -= 1;
             }
-            if (typeof(LongClawItem) != item.GetType())
+            
+            item.SellIn -= 1;
+            
+            if (item.SellIn < 0 && item.Quality > 0)
             {
-                item.SellIn -= 1;
-            }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality += 1;
-                    }
-                }
+                item.Quality -= 1;
             }
 
         }
@@ -252,56 +94,28 @@ namespace GreenStore
             {
                 item.Quality += 1;
 
-                if (item.GetType() == typeof(ViPTicketsToASamuraiConcertItem))
-                {
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-                    }
-                }
-            }
-
-            if (typeof(LongClawItem) != item.GetType())
-            {
-                item.SellIn -= 1;
-            }
-            if (item.SellIn < 0)
-            {
-                if (item.GetType() != typeof(AgedCheddarItem))
-                {
-                    if (item.GetType() != typeof(ViPTicketsToASamuraiConcertItem))
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (typeof(LongClawItem) != item.GetType())
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        item.Quality -= item.Quality;
-                    }
-                }
-                else
+                if (item.SellIn < 11)
                 {
                     if (item.Quality < 50)
                     {
                         item.Quality += 1;
                     }
                 }
+
+                if (item.SellIn < 6)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality += 1;
+                    }
+                }
+            }
+
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0)
+            {
+                item.Quality -= item.Quality;
             }
 
         }
