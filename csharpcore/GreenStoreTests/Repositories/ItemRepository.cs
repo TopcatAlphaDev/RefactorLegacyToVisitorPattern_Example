@@ -18,7 +18,6 @@ public class ItemRepository : IItemRepository
             new ViPTicketsToASamuraiConcertItem { SellIn = 15, Quality = 20 },
             new ViPTicketsToASamuraiConcertItem { SellIn = 10, Quality = 49 },
             new ViPTicketsToASamuraiConcertItem { SellIn = 5, Quality = 49 },
-            // this conjured item does not work properly yet
             new ConjuredCharismaPotionItem { SellIn = 3, Quality = 6 }
         };
     }
