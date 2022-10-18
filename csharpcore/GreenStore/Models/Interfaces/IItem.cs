@@ -1,7 +1,9 @@
-﻿namespace GreenStore.Models.Interfaces;
+﻿using GreenStore.interfaces;
+
+namespace GreenStore.Models.Interfaces;
 
 public interface IItem
 {
-    void Accept(IQualityUpdater qualityUpdater);
+    void Accept(IItemVisitor qualityUpdater);
 
 }

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using GreenStore.interfaces;
 using GreenStore.Models;
 using GreenStore.Models.Interfaces;
 
 namespace GreenStore
 {
-    public class QualityUpdater : IQualityUpdater
+    public class QualityUpdater : IQualityUpdater,IItemVisitor
     {
         private readonly IList<IItem> _items;
         public QualityUpdater(IList<IItem> items)

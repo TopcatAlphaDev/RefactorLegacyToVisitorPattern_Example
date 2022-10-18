@@ -1,10 +1,9 @@
 ﻿using GreenStore.Models;
 
-namespace GreenStore;
+namespace GreenStore.interfaces;
 
-public interface IQualityUpdater
+public interface IItemVisitor
 {
-    void DoUpdate();
     void Visit(LongClawItem item);
     void Visit(AgedCheddarItem item);
     void Visit(Plus3AgilityVestItem item);
