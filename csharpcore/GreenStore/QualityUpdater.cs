@@ -23,10 +23,6 @@ namespace GreenStore
 
         public void Visit(LongClawItem item)
         {
-            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
-            {
-                item.Quality -= 1;
-            }
         }
         public void Visit(AgedCheddarItem item)
         {
@@ -44,49 +40,17 @@ namespace GreenStore
         }
         public void Visit(Plus3AgilityVestItem item)
         {
-            if (item.Quality > 0)
-            {
-                item.Quality -= 1;
-            }
-
-            item.SellIn -= 1;
-
-            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
-            {
-                item.Quality -= 1;
-            }
+            UpdateQualityForItem(item,1 );
         }
 
         public void Visit(ConjuredCharismaPotionItem item)
         {
-            if (item.Quality > 0)
-            {
-                item.Quality -= 2;
-            }
-            
-            item.SellIn -= 1;
-            
-            if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
-            {
-                item.Quality -= 2;
-            }
-
+            UpdateQualityForItem(item, 2);
         }
 
         public void Visit(ElixiroftheBearItem item)
         {
-            if (item.Quality > 0)
-            {
-                item.Quality -= 1;
-            }
-            
-            item.SellIn -= 1;
-            
-            if (item.SellIn < 0 && item.Quality > 0)
-            {
-                item.Quality -= 1;
-            }
-
+            UpdateQualityForItem(item, 1);
         }
         public void Visit(ViPTicketsToASamuraiConcertItem item)
         {
@@ -118,5 +82,21 @@ namespace GreenStore
                 item.Quality -= item.Quality;
             }
         }
+
+        private static void UpdateQualityForItem(Item item, int decreasingValue)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality -= decreasingValue;
+            }
+
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0 && item.Quality > 0)
+            {
+                item.Quality -= decreasingValue;
+            }
+        }
+
     }
 }
