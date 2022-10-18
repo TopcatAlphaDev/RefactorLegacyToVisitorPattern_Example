@@ -101,7 +101,7 @@ namespace GreenStoreTests
             IList<IItem> items = new List<IItem> { item };
             QualityUpdater app = new QualityUpdater(items);
             app.DoUpdate();
-            Assert.Equal((item as Item)?.Name, (items[0] as Item)?.Name);
+            Assert.False(string.IsNullOrWhiteSpace((item as Item)?.Name));
             Assert.Equal(expectedQuality, (items[0] as Item)?.Quality);
         }
         

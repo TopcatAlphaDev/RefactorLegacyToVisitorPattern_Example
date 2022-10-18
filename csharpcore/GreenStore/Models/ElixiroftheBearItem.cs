@@ -5,7 +5,10 @@ namespace GreenStore.Models
 {
     public class ElixiroftheBearItem : Item, IItem
     {
-        public new string Name => "Elixir of the Bear";
+        public ElixiroftheBearItem()
+        {
+            base.Name = "Elixir of the Bear";
+        }
         public void Accept(IItemVisitor qualityUpdater)
         {
             qualityUpdater.Visit(this);
