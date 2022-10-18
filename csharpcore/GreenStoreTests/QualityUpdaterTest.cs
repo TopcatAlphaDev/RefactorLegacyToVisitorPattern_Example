@@ -83,13 +83,13 @@ namespace GreenStoreTests
         }
 
         [Theory]
-        [InlineData(-1, 4)]
-        [InlineData(0, 4)]
-        [InlineData(3, 5)]
-        [InlineData(5, 5)]
-        [InlineData(9, 5)]
-        [InlineData(10, 5)]
-        [InlineData(100, 5)]
+        [InlineData(-1, 2)]
+        [InlineData(0, 2)]
+        [InlineData(3, 4)]
+        [InlineData(5, 4)]
+        [InlineData(9, 4)]
+        [InlineData(10, 4)]
+        [InlineData(100, 4)]
         public void Conjured_Charisma_Potion_quality(int sellIn, int expectedQuality)
         {
             var item = new ConjuredCharismaPotionItem { SellIn = sellIn, Quality = 6 };

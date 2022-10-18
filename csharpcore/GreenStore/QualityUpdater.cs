@@ -61,14 +61,14 @@ namespace GreenStore
         {
             if (item.Quality > 0)
             {
-                item.Quality -= 1;
+                item.Quality -= 2;
             }
             
             item.SellIn -= 1;
             
             if (item.SellIn < 0 && item.Quality > 0 && typeof(LongClawItem) != item.GetType())
             {
-                item.Quality -= 1;
+                item.Quality -= 2;
             }
 
         }
@@ -117,8 +117,6 @@ namespace GreenStore
             {
                 item.Quality -= item.Quality;
             }
-
         }
-
     }
 }
